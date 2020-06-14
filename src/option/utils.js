@@ -95,7 +95,10 @@ function Header() {
 }
 
 function combineHeaders(reqHeaders, resHeaders) {
-  const length = Math.max(reqHeaders.length, resHeaders.length);
+  const length = Math.max(
+    reqHeaders ? reqHeaders.length : 0,
+    resHeaders ? resHeaders.length : 0
+  );
   const headers = new Array(length);
   let i = 0;
   while (i < headers.length) {
@@ -106,6 +109,18 @@ function combineHeaders(reqHeaders, resHeaders) {
     i++;
   }
   return headers;
+}
+
+function formatStr(str) {
+  let s = str.toLowerCase();
+  return str[0].toUpperCase() + s.slice(1);
+}
+
+function formatHeaderName(name) {
+  return name
+    .split("-")
+    .map((s) => formatStr(s))
+    .join("-");
 }
 
 export {
@@ -120,4 +135,5 @@ export {
   newHeader,
   combineHeaders,
   receiveRecord,
+  formatHeaderName,
 };

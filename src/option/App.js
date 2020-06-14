@@ -61,36 +61,37 @@ function App(props) {
                     switch: !props.config.switch,
                   })}
                 />
-                <Button
-                  type="primary"
-                  shape="round"
-                  style={{ marginLeft: 16 }}
-                  icon={<PlusOutlined />}
-                  onClick={props.onAddRule}
-                  size="small"
-                >
-                  Rule
-                </Button>
+                <div>
+                  <Button
+                    type="primary"
+                    shape="round"
+                    style={{ marginLeft: 16 }}
+                    icon={<SaveOutlined />}
+                    onClick={() => {
+                      saveOptions(props.config, () => {
+                        message.success("配置已生效！");
+                      });
+                    }}
+                    size="big"
+                  >
+                    保存配置
+                  </Button>
+                  <Button
+                    type="primary"
+                    shape="round"
+                    style={{ marginLeft: 16 }}
+                    icon={<PlusOutlined />}
+                    onClick={props.onAddRule}
+                    size="big"
+                  >
+                    Rule
+                  </Button>
+                </div>
               </div>
               {props.config.rules.map((rule, index) => {
                 return <Rule rule={rule} index={index} />;
               })}
-              <div className="app_rule_footer">
-                <Button
-                  type="primary"
-                  shape="round"
-                  style={{ marginLeft: 16 }}
-                  icon={<SaveOutlined />}
-                  onClick={() => {
-                    saveOptions(props.config, () => {
-                      message.success("配置已生效！");
-                    });
-                  }}
-                  size="big"
-                >
-                  保存配置
-                </Button>
-              </div>
+              <div className="app_rule_footer"></div>
             </Route>
           </RouterSwitch>
         </div>

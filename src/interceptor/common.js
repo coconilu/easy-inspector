@@ -1,5 +1,5 @@
-function matchType(type, details) {
-  return type === "all" ? true : details.type === type;
+function matchType(type, details_type) {
+  return type === "all" ? true : details_type === type;
 }
 
 function matchURL(url, rule) {
@@ -24,7 +24,8 @@ function modifyHeaders(targetHeaders, ruleHeaders) {
       if (header.type === "add") {
         targetHeaders[existIndex].value = header.value;
       } else if (header.type === "delete") {
-        targetHeaders.splice(i, 1);
+        targetHeaders.splice(existIndex, 1);
+        targetHeaderKeys.splice(existIndex, 1);
       }
     } else {
       // add for inexistence

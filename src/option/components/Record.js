@@ -13,7 +13,20 @@ const { Column, ColumnGroup } = Table;
 function URLDisplay(props) {
   return (
     <Tooltip title={props.title} color="cyan" placement="bottom">
-      <p className="url_display">{props.title}</p>
+      <p className="url_display">
+        <span
+          style={{
+            marginRight: 8,
+            color: "	#008B8B",
+            display: "inline-block",
+            width: 24,
+            textAlign: "right",
+          }}
+        >
+          {props.index + 1}
+        </span>
+        {props.title}
+      </p>
     </Tooltip>
   );
 }
@@ -39,7 +52,10 @@ function Record(props) {
         {records.map((record, index) => {
           const headers = combineHeaders(record.reqHeaders, record.resHeaders);
           return (
-            <Panel header={<URLDisplay title={record.url} />} key={index}>
+            <Panel
+              header={<URLDisplay title={record.url} index={index} />}
+              key={index}
+            >
               <p>{`资源类型：${record.resourceType} `}</p>
               <p>{`请求方法：${record.method}`}</p>
               <p>

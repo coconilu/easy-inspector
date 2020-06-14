@@ -1,7 +1,13 @@
 import React from "react";
 import { Input, Select, Card, Switch, Divider, Button } from "antd";
 import { PlusOutlined, CloseOutlined } from "@ant-design/icons";
-import { resourceTypes, urlTypes, headerType, newHeader } from "../utils";
+import {
+  resourceTypes,
+  urlTypes,
+  headerType,
+  newHeader,
+  formatHeaderName,
+} from "../utils";
 import "./Rule.css";
 import { connect } from "react-redux";
 import { delRule, changeRule } from "../actions/config";
@@ -32,13 +38,15 @@ function renderHeaders(headers, _type, props) {
           value={header.name}
           key="name"
           onChange={(e) => {
-            props.onChangeHeader(_type, index, { name: e.target.value });
+            props.onChangeHeader(_type, index, {
+              name: formatHeaderName(e.target.value),
+            });
           }}
           placeholder=""
         />
         <Input
           style={{
-            width: 320,
+            width: 360,
             marginRight: 16,
             display: `${header.type === "add" ? "inline-block" : "none"}`,
           }}
