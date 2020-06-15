@@ -6,7 +6,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "rollup -c --watch --dev",
-    "build": "cross-env NODE_ENV=production rollup -c"
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "package": "rm -rf ./publish/*  && zip -r ./publish/easy-interceptor.zip ./build/*",
+    "move": "mv ./publish/easy-interceptor.zip ~/Downloads/"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.10.2",

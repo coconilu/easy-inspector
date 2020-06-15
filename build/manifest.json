@@ -1,0 +1,24 @@
+{
+  "name": "Easy-Interceptor",
+  "version": "1.0",
+  "description": "简易的http(s)请求拦截器，支持修改请求头和响应头。",
+  "author": "bayeswang",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "webRequestBlocking",
+    "webRequest",
+    "<all_urls>"
+  ],
+  "options_page": "index.html",
+  "background": {
+    "scripts": ["./interceptor.js"]
+  },
+  "icons": {
+    "16": "images/logo16.png",
+    "32": "images/logo32.png",
+    "48": "images/logo48.png",
+    "128": "images/logo128.png"
+  },
+  "manifest_version": 2
+}

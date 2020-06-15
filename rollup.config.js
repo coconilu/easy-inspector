@@ -6,42 +6,45 @@ import replace from "@rollup/plugin-replace";
 import livereload from "rollup-plugin-livereload";
 import serve from "rollup-plugin-serve";
 import styles from "rollup-plugin-styles";
-import filesize from 'rollup-plugin-filesize';
+import filesize from "rollup-plugin-filesize";
 
-export default commandLineArgs => [
-  {
-    input: "src/interceptor/index.js",
-    output: {
-      file: "dist/interceptor.js",
-      format: "iife",
+export default (commandLineArgs) => {
+  const targetDir = commandLineArgs.dev ? "dist" : "build";
+  return [
+    {
+      input: "src/interceptor/index.js",
+      output: {
+        file: targetDir + "/interceptor.js",
+        format: "iife",
+      },
     },
-  },
-  {
-    input: "src/option/index.js",
-    output: {
-      file: "dist/option.js",
-      format: "iife",
-    },
-    onwarn (warning, warn) {
-      if (warning.code === 'THIS_IS_UNDEFINED') return;
-    },
-    watch: {
-      exclude: "node_modules/**",
-    },
-    plugins: [
-      styles(),
-      babel({
+    {
+      input: "src/option/index.js",
+      output: {
+        file: targetDir + "/option.js",
+        format: "iife",
+      },
+      onwarn(warning, warn) {
+        if (warning.code === "THIS_IS_UNDEFINED") return;
+      },
+      watch: {
         exclude: "node_modules/**",
-        babelHelpers: "bundled",
-      }),
-      resolve(),
-      commonjs(),
-      replace({
-        "process.env.NODE_ENV": "'production'",
-      }),
-      filesize(),
-      commandLineArgs.dev && serve({ open: true, contentBase: "./" }),
-      commandLineArgs.dev && livereload("dist"),
-    ],
-  },
-];
+      },
+      plugins: [
+        styles(),
+        babel({
+          exclude: "node_modules/**",
+          babelHelpers: "bundled",
+        }),
+        resolve(),
+        commonjs(),
+        replace({
+          "process.env.NODE_ENV": "'production'",
+        }),
+        filesize(),
+        commandLineArgs.dev && serve({ open: true, contentBase: "./" }),
+        commandLineArgs.dev && livereload("dist"),
+      ],
+    },
+  ];
+};
