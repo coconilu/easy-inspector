@@ -7,10 +7,13 @@
   "scripts": {
     "dev": "rollup -c --watch --dev",
     "build": "cross-env NODE_ENV=production rollup -c",
-    "package": "rm -rf ./publish/*  && zip -r ./publish/easy-interceptor.zip ./build/*",
-    "move": "mv ./publish/easy-interceptor.zip ~/Downloads/"
+    "zip": "rm ./easy-interceptor.zip || zip -r ./easy-interceptor.zip ./manifest.json ./index.html ./images/* ./dist/*",
+    "package": "yarn build && yarn zip",
+    "ziplist": "unzip -l ./easy-interceptor.zip",
+    "move": "mv ./easy-interceptor.zip ~/Downloads/"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
     "@rollup/plugin-babel": "^5.0.3",
@@ -26,6 +29,8 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.2",
+    "@babel/runtime": "^7.10.2",
+    "@babel/runtime-corejs3": "^7.10.2",
     "antd": "^4.3.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

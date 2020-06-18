@@ -7,11 +7,14 @@ module.exports = function (api) {
           useBuiltIns: "usage",
           corejs: 3,
           modules: false,
+          targets: "since 2018, not dead",
         },
       ],
       "@babel/preset-react",
     ],
-    plugins: [],
+    plugins: [
+      ["@babel/plugin-transform-runtime", { useESModules: true, corejs: 3 }],
+    ],
   };
   if (api.env("production")) {
     // production env

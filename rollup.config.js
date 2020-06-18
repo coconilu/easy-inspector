@@ -9,7 +9,7 @@ import styles from "rollup-plugin-styles";
 import filesize from "rollup-plugin-filesize";
 
 export default (commandLineArgs) => {
-  const targetDir = commandLineArgs.dev ? "dist" : "build";
+  const targetDir = "dist";
   return [
     {
       input: "src/interceptor/index.js",
@@ -17,6 +17,15 @@ export default (commandLineArgs) => {
         file: targetDir + "/interceptor.js",
         format: "iife",
       },
+      plugins: [
+        babel({
+          exclude: "node_modules/**",
+          babelHelpers: "runtime",
+        }),
+        resolve(),
+        commonjs(),
+        filesize(),
+      ],
     },
     {
       input: "src/option/index.js",
@@ -34,7 +43,7 @@ export default (commandLineArgs) => {
         styles(),
         babel({
           exclude: "node_modules/**",
-          babelHelpers: "bundled",
+          babelHelpers: "runtime",
         }),
         resolve(),
         commonjs(),

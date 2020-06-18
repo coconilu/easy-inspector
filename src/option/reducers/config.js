@@ -10,9 +10,9 @@ const initState = {
       resourceType: "all",
       switch: true,
       reqHeaders: [
-        { name: "Referer", value: "www.baidu.com", type: "add" },
+        { name: "Referer", value: "www.test.com", type: "add" },
       ],
-      resHeaders: [{ name: "test", value: "test1", type: "add" }],
+      resHeaders: [{ name: "Test", value: "hello-world", type: "add" }],
     },
   ],
 };

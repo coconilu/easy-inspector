@@ -113,6 +113,7 @@ function combineHeaders(reqHeaders, resHeaders) {
 
 function formatStr(str) {
   let s = str.toLowerCase();
+  if (s.length === 0) return "";
   return str[0].toUpperCase() + s.slice(1);
 }
 
