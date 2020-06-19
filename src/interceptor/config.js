@@ -6,10 +6,8 @@ const config = {
       urlString: "",
       resourceType: "all",
       switch: true,
-      reqHeaders: [
-        { name: "Referer", value: "https://www.tp8.com/", type: "add" },
-      ],
-      resHeaders: [{ name: "test", value: "test1", type: "add" }],
+      reqHeaders: [{ name: "Referer", value: "www.test.com", type: "add" }],
+      resHeaders: [{ name: "Test", value: "hello-world", type: "add" }],
     },
   ],
 };

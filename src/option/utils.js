@@ -2,7 +2,16 @@ const extendName = "easy-interceptor";
 
 const defaultConfig = {
   switch: false,
-  rules: [],
+  rules: [
+    {
+      urlType: "include", // ["include", "reg"]
+      urlString: "",
+      resourceType: "all",
+      switch: true,
+      reqHeaders: [{ name: "Referer", value: "www.test.com", type: "add" }],
+      resHeaders: [{ name: "Test", value: "hello-world", type: "add" }],
+    },
+  ],
 };
 
 let appConfig = defaultConfig;
