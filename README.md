@@ -2,6 +2,12 @@
 
 Easy-Inspector是一个chrome插件（开发者工具），借助它，你可以修改请求头和响应头，并且把被处理的请求收集起来，方便分析。
 
+借助Easy-Inspector，你可以轻松实现如下场景：
+
+1. 绕开防盗链
+2. 修改cookie
+3. 绕开同源策略
+
 ## 安装方式
 
 1. 通过chrome网上应用店安装，搜索Easy-Interceptor，点击安装即可
