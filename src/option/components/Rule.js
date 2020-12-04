@@ -39,7 +39,7 @@ function renderHeaders(headers, _type, props) {
           key="name"
           onChange={(e) => {
             props.onChangeHeader(_type, index, {
-              name: formatHeaderName(e.target.value),
+              name: e.target.value,
             });
           }}
           placeholder=""
