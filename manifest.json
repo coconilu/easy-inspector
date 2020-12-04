@@ -1,6 +1,6 @@
 {
   "name": "Easy-Interceptor",
-  "version": "1.1",
+  "version": "1.2",
   "description": "简易的http(s)请求拦截器，支持修改请求头和响应头。",
   "author": "bayeswang",
   "permissions": [
